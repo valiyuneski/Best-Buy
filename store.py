@@ -1,11 +1,12 @@
-from typing import List
+from typing import List, Optional
 
 # Import or define the Product class
 from products import Product  # Assuming Product class is defined in products.py
 
+
 class Store:
-    def __init__(self, products: List[Product] = None):
-        self.products = products if products is not None else []
+    def __init__(self, products: Optional[List[Product]] = None):
+        self.products: List[Product] = products if products is not None else []
 
     def add_product(self, product):
         """Adds a product to store."""
