@@ -1,4 +1,5 @@
 class Product:
+    """A product with a name, price, quantity, and active status."""
     def __init__(self, name="", price=0.0, quantity=0, active=True):
         self.name = name
         self.price = price
@@ -34,7 +35,7 @@ class Product:
 
     def show(self):
         """Returns a string representing the product."""
-        return f"Product Name: {self.name}, Price: ${self.price:.2f}, Quantity: {self.quantity}, Active: {'Yes' if self.active else 'No'}"
+        return f"{self.name}, Price: ${self.price:.2f}, Quantity: {self.quantity}, Active: {'Yes' if self.active else 'No'}"
 
     def buy(self, quantity) -> float:
         """

@@ -5,6 +5,7 @@ from products import Product  # Assuming Product class is defined in products.py
 
 
 class Store:
+    """A store that holds multiple products."""
     def __init__(self, products: Optional[List[Product]] = None):
         self.products: List[Product] = products if products is not None else []
 
@@ -13,8 +14,9 @@ class Store:
         self.products.append(product)
 
     def list_products(self):
+        """Lists all products in the store."""
         for product in self.products:
-            print(product)
+            print(product.show())
 
     def remove_product(self, product):
         """Removes a product from store."""
@@ -41,7 +43,7 @@ class Store:
                 raise TypeError("First item in tuple must be a Product")
             if not isinstance(quantity, int):
                 raise TypeError("Second item in tuple must be an integer")
-            
+
             total_price += product.buy(quantity)
 
         return total_price
