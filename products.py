@@ -1,5 +1,11 @@
 class Product:
-    """A product with a name, price, quantity, and active status."""
+    """Represents a product with a name, price, and quantity.
+    Attributes:
+        name (str): The name of the product.
+        price (float): The price of the product.
+        quantity (int): The available quantity of the product.
+        active (bool): Indicates whether the product is active."""
+
     def __init__(self, name="", price=0.0, quantity=0, active=True):
         self.name = name
         self.price = price

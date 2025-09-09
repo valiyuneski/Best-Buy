@@ -5,7 +5,10 @@ from products import Product  # Assuming Product class is defined in products.py
 
 
 class Store:
-    """A store that holds multiple products."""
+    """Represents a store containing a list of products.
+
+    Attributes:
+        products (list[products.Product]): A list of products available in the store."""
     def __init__(self, products: Optional[List[Product]] = None):
         self.products: List[Product] = products if products is not None else []
 
