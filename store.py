@@ -29,9 +29,16 @@ class Store:
         """Returns the total quantity of all products in the store."""
         return sum(product.get_quantity() for product in self.products)
 
-    def get_all_products(self) -> List[Product]:
-        """Returns a list of all products in the store."""
-        return self.products
+    def get_all_products(self, include_inactive: bool = False) -> List[Product]:
+        """
+        Returns a list of products in the store.
+
+        :param include_inactive: If True, includes inactive products as well.
+                                If False (default), returns only active products.
+        """
+        if include_inactive:
+            return self.products
+        return [product for product in self.products if product.active]
 
     def order(self, shopping_list) -> float:
         """
