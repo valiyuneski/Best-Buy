@@ -7,6 +7,13 @@ class Product:
         active (bool): Indicates whether the product is active."""
 
     def __init__(self, name="", price=0.0, quantity=0, active=True):
+        if not name.strip():  # empty or whitespace-only string
+            raise ValueError("Product name cannot be empty.")
+        if price < 0:
+            raise ValueError("Price cannot be negative.")
+        if quantity < 0:
+            raise ValueError("Quantity cannot be negative.")
+
         self.name = name
         self.price = price
         self.quantity = quantity
@@ -17,11 +24,16 @@ class Product:
         return self.quantity
 
     def set_quantity(self, quantity):
-        """Sets the product's quantity. Quantity cannot be negative."""
-        if quantity >= 0:
-            self.quantity = quantity
-        else:
+        """Sets the product's quantity. Quantity cannot be negative.
+        If quantity reaches 0, deactivates the product."""
+        if quantity < 0:
             raise ValueError("Quantity cannot be negative")
+
+        self.quantity = quantity
+
+        # Auto-deactivate when quantity reaches 0
+        if self.quantity == 0:
+            self.active = False
 
     def is_active(self) -> bool:
         """Returns True if the product is active, False otherwise."""
